@@ -1,0 +1,1277 @@
+{
+	"info": {
+		"_postman_id": "9e2306cf-4496-467b-b450-60b66c78537f",
+		"name": "TTT-Meetup",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6508986"
+	},
+	"item": [
+		{
+			"name": "Injection-2",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{user1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Cookie",
+						"value": "token=abc123"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstname\" : \"<Script>alert('Hello');</Script>\",\n    \"lastname\" : \"Bhatt\",\n    \"totalprice\" : 111,\n    \"depositpaid\" : true,\n    \"bookingdates\" : {\n     \"checkin\" : \"2024-11-01\",\n        \"checkout\" : \"2019-11-04\"\n    },\n    \"additionalneeds\" : \"Breakfast\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{resturl}}/booking/",
+					"host": [
+						"{{resturl}}"
+					],
+					"path": [
+						"booking",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Injection-1",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{user1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Cookie",
+						"value": "token=abc123"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstname\" : \"Alia\",\n    \"lastname\" : \"Bhatt\",\n    \"totalprice\" : 111,\n    \"depositpaid\" : true,\n    \"bookingdates\" : {\n        \"checkin\" : \"2024-11-01\",\n        \"checkout\" : \"2019-11-04\"\n    },\n    \"additionalneeds\" : \"Breakfast\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{resturl}}/booking/",
+					"host": [
+						"{{resturl}}"
+					],
+					"path": [
+						"booking",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Injection-ValidResponse",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{beartoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "en-US,en;q=0.9,mr-IN;q=0.8,mr;q=0.7,kn-IN;q=0.6,kn;q=0.5"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJic042VnhNOWl3d3ZDRjYwQndkR3VoakF5Snp3QWF6X2ktRDdfR2JlQUNNIn0.eyJleHAiOjE3Mjk5NDc4MzYsImlhdCI6MTcyOTkzNzAzNiwianRpIjoiM2IyYWYzNDktNmIzOC00NjY2LWFmZTctYTU0NTEzMGU1N2ZlIiwiaXNzIjoiaHR0cHM6Ly9pZGVudGl0eS5xYWxhcmEuY29tL2F1dGgvcmVhbG1zL0dvbGRlbkJpcmQiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiYTllNWI5ZWItYWNhNy00MWFlLWFiYTctNmEyZDAyYWY2YzZkIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoibmV4dCIsInNlc3Npb25fc3RhdGUiOiJlNmY3NGViNi1mOWYyLTQyNWMtYmMwOS00ZTJhMTBjZDM0OWYiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbImh0dHBzOi8vd3d3LnF1b3RlYWRtaW4ucWFsYXJhLmNvbS8qIiwiaHR0cHM6Ly93d3cucWFsYXJhLmNvbSIsImh0dHBzOi8vd3d3LmJ1eWVyYWRtaW4ucWFsYXJhLmNvbSIsImh0dHBzOi8vd3d3LnByb21vYWRtaW4ucWFsYXJhLmNvbS8qIiwiaHR0cHM6Ly93d3cucG9hZG1pbi5xYWxhcmEuY29tLyoiLCJodHRwOi8vcWFsYXJhLmNvbS8qIiwiaHR0cHM6Ly93d3cucHJvZHVjdGFkbWluLnFhbGFyYS5jb20iLCJodHRwczovL3d3dy5xYWxhcmEuY29tLyoiLCJodHRwczovL3d3dy5xYWxhcmEuY29tLyIsImh0dHBzOi8vd3d3Lm9yZGVyYWRtaW4ucWFsYXJhLmNvbS8qIiwiaHR0cHM6Ly9xYWxhcmEuY29tLyoiLCJodHRwczovL2Nkbi5xYWxhcmEuY29tIiwiaHR0cHM6Ly93d3cucXVvdGVhZG1pbi5xYWxhcmEuY29tIiwiaHR0cHM6Ly93d3cucHJvZHVjdGFkbWluLnFhbGFyYS5jb20vKiIsImh0dHBzOi8vd3d3LnBvYWRtaW4ucWFsYXJhLmNvbSIsImh0dHBzOi8vd3d3Lm9yZGVyYWRtaW4ucWFsYXJhLmNvbSIsImh0dHBzOi8vd3d3LmJ1eWVyYWRtaW4ucWFsYXJhLmNvbS8qIiwiaHR0cHM6Ly8qLnFhbGFyYS5jb20vKiJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsiUFJPRFVDVF9BRE1JTl9VSSIsIlNFTExFUl9BRE1JTl9VSSIsIlZJRVdfU0VMTEVSX0hPTUUiLCJTSElQTUVOVF9NQU5BR0VNRU5UX1VJIiwiUFJPTU9fQURNSU4iLCJCVVlFUl9PUkdfT1dORVIiLCJPUFNfQURNSU4iLCJWSUVXX1BST0ZJTEUiLCJQT19BRE1JTiIsIm9mZmxpbmVfYWNjZXNzIiwiUVVPVEVfQURNSU5fVUkiLCJ1bWFfYXV0aG9yaXphdGlvbiIsIlFVT1RFX1BSSUNFIiwiT1JERVJfQURNSU5fVUkiXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6InByb2ZpbGUiLCJzaWQiOiJlNmY3NGViNi1mOWYyLTQyNWMtYmMwOS00ZTJhMTBjZDM0OWYifQ.bqe0Qap0rdj-fN5DSCfq0FFRkeocxzlhl-RlSEMmoB4MpCBrqXQO-jV7dc8FGruBDjhud69f4dLD4s0NV4kgFTuPqYH04p1Ic3Dvaes1jMBRsQSMhOtOIquhqF6L9BhMD9Aqksq9EZqxbHsBCKsR_vB2-b-kbZkvNEN3eZX8iAEofsuV3V6Sbrd4AuZBikVv0lswplBgJd_QJi91Ve3whDw77BEKLRsQPRvfkbzDuXXCaRHGKTNpw_PlzweiNKXfRLkks9Hbyx3pK0DhciSkPU_k1K71Tq7Mu5eoDzFCqhIo2RgYk-Fe2bSeXKnyg0AYp5UVzPCc3IA6Nx0lSFSGNw"
+					},
+					{
+						"key": "Connection",
+						"value": "keep-alive"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Cookie",
+						"value": "PUSH_TOKEN=%7B%22actualValue%22%3A%22eRgWz2pgTiE%3AAPA91bH0fioJlwFtWFCvqUqUdtqgf2IhS7LO8iw7q8gLCaRHwUKM8doAz2GsrypRObI2HlfC9d8wV-K6Rne9KNBgxhdyPJvhvTJtGXcrni7n0VjLMqI_DZemubTAQivDkt3ywPOxH5tM%22%2C%22MOE_DATA_TYPE%22%3A%22string%22%7D; _fbp=fb.1.1727436349535.402170786127053699; _clck=6mkw7c%7C2%7Cfpt%7C0%7C1737; _gcl_gs=2.1.k1^$i1728889889^$u257208843; _gac_UA-162944951-1=1.1728889926.Cj0KCQjwgrO4BhC2ARIsAKQ7zUkOS9vARGr0ANBZ3AYOMtmC-NYaw73Q3zV0J5WLXsi_6JPI8AmAaosaAilIEALw_wcB; _gcl_aw=GCL.1728889929.Cj0KCQjwgrO4BhC2ARIsAKQ7zUkOS9vARGr0ANBZ3AYOMtmC-NYaw73Q3zV0J5WLXsi_6JPI8AmAaosaAilIEALw_wcB; mf_user=9831ecc7de4b500fe6decb14126741b4|1_0S9quvUUyxLIomKS_afQ; _gid=GA1.2.1406102181.1729588895; USER_DATA=%7B%22attributes%22%3A%5B%7B%22key%22%3A%22USER_ATTRIBUTE_UNIQUE_ID%22%2C%22value%22%3A%22BU18923%22%2C%22updated_at%22%3A1729670180659%7D%2C%7B%22key%22%3A%22USER_ATTRIBUTE_USER_EMAIL%22%2C%22value%22%3A%22komal.chowdhary%40cloverbaytechnologies.com%22%2C%22updated_at%22%3A1729670235291%7D%2C%7B%22key%22%3A%22USER_ATTRIBUTE_USER_MOBILE%22%2C%22value%22%3A%229535462047%22%2C%22updated_at%22%3A1729670235291%7D%5D%2C%22subscribedToOldSdk%22%3Afalse%2C%22deviceUuid%22%3A%22cf7bbd2f-b9ad-4001-a235-e9750c046919%22%2C%22deviceAdded%22%3Atrue%7D; cookiehub=eyJhbnN3ZXJlZCI6dHJ1ZSwicHJlY29uc2VudCI6ZmFsc2UsInJldmlzaW9uIjoxLCJkbnQiOmZhbHNlLCJjb29raWVMYXdzIjpmYWxzZSwidG9rZW4iOiJJdjkwbUY4bG9jWWF6amFFVkVhcGlwVXBORDFLU0lKTHBtQXlmeDVKQ0NLWDlwYm84RkNIR2JZT2F4YXMzUFl6IiwidGltZXN0YW1wIjoiMjAyNC0xMC0yNVQxNzowOToxNC4xODFaIiwiY2F0ZWdvcmllcyI6W3siY2lkIjoxLCJpZCI6Im5lY2Vzc2FyeSIsInZhbHVlIjp0cnVlLCJwcmVjb25zZW50Ijp0cnVlLCJmaXJlZCI6ZmFsc2V9LHsiY2lkIjoyLCJpZCI6InByZWZlcmVuY2VzIiwidmFsdWUiOnRydWUsInByZWNvbnNlbnQiOmZhbHNlLCJmaXJlZCI6ZmFsc2V9LHsiY2lkIjozLCJpZCI6ImFuYWx5dGljcyIsInZhbHVlIjp0cnVlLCJwcmVjb25zZW50IjpmYWxzZSwiZmlyZWQiOmZhbHNlfSx7ImNpZCI6NCwiaWQiOiJtYXJrZXRpbmciLCJ2YWx1ZSI6dHJ1ZSwicHJlY29uc2VudCI6ZmFsc2UsImZpcmVkIjpmYWxzZX0seyJjaWQiOjUsImlkIjoidW5jYXRlZ29yaXplZCIsInZhbHVlIjp0cnVlLCJwcmVjb25zZW50IjpmYWxzZSwiZmlyZWQiOmZhbHNlfV19; XSRF-TOKEN=d1ac5341-d85e-48c0-a38b-24cfcf78c246; _ga=GA1.2.251152431.1727436349; moe_uuid=cf7bbd2f-b9ad-4001-a235-e9750c046919; _uetsid=40dc43e0929d11efb09b51b770cce9ee; _uetvid=3f183f607cc311efa4df6ffda79187e4; SESSION=%7B%22sessionKey%22%3A%2258aa9ec0-a271-408e-8c7d-fdacebc9b077%22%2C%22sessionStartTime%22%3A%222024-10-26T10%3A04%3A02.340Z%22%2C%22sessionMaxTime%22%3A1800%2C%22customIdentifiersToTrack%22%3A%5B%5D%2C%22sessionExpiryTime%22%3A1729938843788%2C%22numberOfSessions%22%3A23%7D; HARD_ASK_STATUS=%7B%22actualValue%22%3A%22granted%22%2C%22MOE_DATA_TYPE%22%3A%22string%22%7D; SUBSCRIPTION_DETAILS=%7B%22domain%22%3A%22https%3A%2F%2Fwww.qalara.com%22%2C%22token%22%3A%22eRgWz2pgTiE%3AAPA91bH0fioJlwFtWFCvqUqUdtqgf2IhS7LO8iw7q8gLCaRHwUKM8doAz2GsrypRObI2HlfC9d8wV-K6Rne9KNBgxhdyPJvhvTJtGXcrni7n0VjLMqI_DZemubTAQivDkt3ywPOxH5tM%22%2C%22endpoint%22%3A%22https%3A%2F%2Ffcm.googleapis.com%2Ffcm%2Fsend%2F%22%2C%22keys%22%3A%7B%22p256dh%22%3A%22BBiaqs0WPKm7N2ECADwT1XKyNODua_Q3FSiZ0DBlDTAe9--UhtC_hx3yOpK-daIS1MLJ-rGNYxFTWc-SdMEqVFM%22%2C%22auth%22%3A%22ysIAw9-dbH1eU-9CcichBA%22%7D%7D; _ga_HDC5VLJB5Q=GS1.1.1729937041.71.1.1729937128.60.0.0; _gcl_au=1.1.1804831605.1727436348.836109767.1729937128.1729937128; mf_d17654f2-c6b4-495d-a852-404ff1fc2185=5318ff23f838a10517ff5c344aafddbf|102602127b41117b91dc7279a46cb1f982c1f94c.47.1729937042020^$10260369456a41eac1205518f12a0aee0ad8e012.-13028333705.1729937043572|1729937128395|0_101|2|-13028333705|1729937128414||1|18.14|18.68644"
+					},
+					{
+						"key": "Origin",
+						"value": "https://www.qalara.com"
+					},
+					{
+						"key": "Sec-Fetch-Dest",
+						"value": "empty"
+					},
+					{
+						"key": "Sec-Fetch-Mode",
+						"value": "cors"
+					},
+					{
+						"key": "Sec-Fetch-Site",
+						"value": "same-site"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
+					},
+					{
+						"key": "X-XSRF-TOKEN",
+						"value": "d1ac5341-d85e-48c0-a38b-24cfcf78c246"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Chromium\";v=\"130\", \"Google Chrome\";v=\"130\", \"Not?A_Brand\";v=\"99\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"komal.chowdhary^@cloverbaytechnologies.com\",\r\n    \"firstName\": \"<Script>alert('Hello');</Script>\",\r\n    \"lastName\": \"Chowdhary\",\r\n    \"email\": \"komal.chowdhary^@cloverbaytechnologies.com\",\r\n    \"country\": \"India\",\r\n    \"orgPhone\": \"9535462047\",\r\n    \"personalPhone\": \"9535462047\",\r\n    \"orgName\": \"CloverBay\",\r\n    \"orgType\": \"Digital/ Online retailer\",\r\n    \"roleInOrganization\": \"Owner/CEO\",\r\n    \"eoriVatBusinessNumber\": \"9999090922\",\r\n    \"dealsInOrderTypes\": [\r\n        \"Made-to-order medium quantity\",\r\n        \"Ready-to-ship large quantity\"\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{myurl}}/profiles/my",
+					"host": [
+						"{{myurl}}"
+					],
+					"path": [
+						"profiles",
+						"my"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Restful-Auth",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\" : \"admin\",\n    \"password\" : \"password123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://restful-booker.herokuapp.com/auth",
+					"protocol": "https",
+					"host": [
+						"restful-booker",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Getbooking IDs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://restful-booker.herokuapp.com/booking",
+					"protocol": "https",
+					"host": [
+						"restful-booker",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"booking"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BOLA-1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 404\", function () {\r",
+							"  pm.response.to.have.status(404);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{user1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{resturl}}/booking/100",
+					"host": [
+						"{{resturl}}"
+					],
+					"path": [
+						"booking",
+						"100"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BOLA-2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 404\", function () {\r",
+							"  pm.response.to.have.status(404);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{user1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{resturl}}/booking/2000",
+					"host": [
+						"{{resturl}}"
+					],
+					"path": [
+						"booking",
+						"2000"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BOLA-crAPI",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJnaXRhQGdtYWlsLmNvbSIsImlhdCI6MTczMzM5MzA3MywiZXhwIjoxNzMzOTk3ODczLCJyb2xlIjoidXNlciJ9.Ebb6PyKRmCLMUayjQKLUwc2Nl26BtGQU3mb-E5s7vNvokAJs9DHU9B5Q46Out9UHKAe4Xvg6fqJws7komCTt1xQhYSjN0ZoCpKCQRkV3w9ztGS_nKHbQsVWwoiVR-9y5ICRW1UHR3dMWPfs8mZH_qBMNaUhDn6F5GzUlBG-ZiW2SgNZn6t3hVQwT9cWSgAs4TTXJyU_shyqm4BohBQN4XyJq_epmDQRxYpXjGW2VnI7TDiIG4JCs85wwbJUdBAxxl490aTeP5MJppK4GXGFnh0qucIZ4DdSTp50Q522Fe5SzuxLdjGdUh1gr1IzCJbteSvo5mZ08tzBOi-qammQytg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{crAPI}}/workshop/api/mechanic/mechanic_report?report_id=1",
+					"host": [
+						"{{crAPI}}"
+					],
+					"path": [
+						"workshop",
+						"api",
+						"mechanic",
+						"mechanic_report"
+					],
+					"query": [
+						{
+							"key": "report_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BOLA-Valid",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{beartoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://qalara.com:1160/amend/get-order-details/GB10020697",
+					"protocol": "https",
+					"host": [
+						"qalara",
+						"com"
+					],
+					"port": "1160",
+					"path": [
+						"amend",
+						"get-order-details",
+						"GB10020697"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UnrestrictedResourceConsumption",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 404\", function () {\r",
+							"  pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{resturl}}/booking/{{bookingID}}",
+					"host": [
+						"{{resturl}}"
+					],
+					"path": [
+						"booking",
+						"{{bookingID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Unrestricted-booking",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 404\", function () {\r",
+							"  pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{user1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{resturl}}/booking/2000",
+					"host": [
+						"{{resturl}}"
+					],
+					"path": [
+						"booking",
+						"2000"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BFLA-1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 404\", function () {\r",
+							"  pm.response.to.have.status(404);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{user1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{resturl}}/booking/25",
+					"host": [
+						"{{resturl}}"
+					],
+					"path": [
+						"booking",
+						"25"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BFLA-2",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Cookie",
+						"value": "token=abc123"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstname\" : \"Narendra\",\n    \"lastname\" : \"Modi\",\n    \"totalprice\" : 111,\n    \"depositpaid\" : true,\n    \"bookingdates\" : {\n        \"checkin\" : \"2025-01-01\",\n        \"checkout\" : \"2025-01-11\"\n    },\n    \"additionalneeds\" : \"Breakfast\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{resturl}}/booking/25",
+					"host": [
+						"{{resturl}}"
+					],
+					"path": [
+						"booking",
+						"25"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BFLA-3",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{user1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Cookie",
+						"value": "token=abc123"
+					}
+				],
+				"url": {
+					"raw": "{{resturl}}/booking/25",
+					"host": [
+						"{{resturl}}"
+					],
+					"path": [
+						"booking",
+						"25"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BOPLA-Mass Assignment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJnZWV0YUBnbWFpbC5jb20iLCJpYXQiOjE3MzAxOTI4NjMsImV4cCI6MTczMDc5NzY2Mywicm9sZSI6InVzZXIifQ.l-vP0nNuqGjAvTDrax1a0o7ub-URtSF942tCuJTSIi1IDcYqJeGdKssoHQDO2ffeovD5SPDJnA0V1yvtSJGQHCMpi8UHwIM1DblJLpP6xqAI4USpfXFfWW80YyWjuaESQFlCiKSChA14nJFiFSDqJlzE72lC9PP-ab9ttpeKS5TDqJsEr_RS5F2U3rgcFQbTOPtgj84tk5iRZ6a6uRLg8Ju7f1_YAKVoq9DPyx03Cdi2X2emHnCFLGc_B025tvxAq3fIlNo0j7E3sl5c5z7LLhTu3jzJWc12_gHLuM8xxSmExO-7kcFflGWTUHt5aOXCyKDFJi-DURa-ToalT8atOA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{crAPI}}/workshop/api/shop/orders/20",
+					"host": [
+						"{{crAPI}}"
+					],
+					"path": [
+						"workshop",
+						"api",
+						"shop",
+						"orders",
+						"20"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BOPLA-Mass Assignment PUT",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJnaXRhQGdtYWlsLmNvbSIsImlhdCI6MTczMzM5MzA3MywiZXhwIjoxNzMzOTk3ODczLCJyb2xlIjoidXNlciJ9.Ebb6PyKRmCLMUayjQKLUwc2Nl26BtGQU3mb-E5s7vNvokAJs9DHU9B5Q46Out9UHKAe4Xvg6fqJws7komCTt1xQhYSjN0ZoCpKCQRkV3w9ztGS_nKHbQsVWwoiVR-9y5ICRW1UHR3dMWPfs8mZH_qBMNaUhDn6F5GzUlBG-ZiW2SgNZn6t3hVQwT9cWSgAs4TTXJyU_shyqm4BohBQN4XyJq_epmDQRxYpXjGW2VnI7TDiIG4JCs85wwbJUdBAxxl490aTeP5MJppK4GXGFnh0qucIZ4DdSTp50Q522Fe5SzuxLdjGdUh1gr1IzCJbteSvo5mZ08tzBOi-qammQytg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"product_id\":2,\r\n\"quantity\":1,\r\n\"status\":\"returned\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{crAPI}}/workshop/api/shop/orders/21",
+					"host": [
+						"{{crAPI}}"
+					],
+					"path": [
+						"workshop",
+						"api",
+						"shop",
+						"orders",
+						"21"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BOPLA-Excessive Data Exposure",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJTaXRhQGdtYWlsLmNvbSIsImlhdCI6MTczMDE5MTk1MywiZXhwIjoxNzMwNzk2NzUzLCJyb2xlIjoidXNlciJ9.U1_Oy9jPTboWBX4BExRfwi2BAo7DIjQmfl61aoc-tRGEcT80z2D44H92ISvhYVRQhlVQDCXDexu_leflagjYB4HIkViKt1MPtyDbxpw9sCTprqzio8QqThkhDNNZ5vD6PU2NQXChMtRGBSE39rxGqR8cIcMuc3yyKi4K9mNkwB00dc8ZCaN4qY6NDi2d4zOtpVzkHJ1_tm2l5SizoY1g-f9doLYGnN5l8JmtX7SW45haJHMJmawDkBWAr8WbezdNEWZoUns8JysuNnJ2qdCaSaDMGx8BMV-FvlfIv4sPzwoi7eN_kxylZyT_mSmvpbUcTIL9QM44jIlJSbwEOPqVmQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{crAPI}}/community/api/v2/community/posts/recent?limit=<integer>&offset=<integer>",
+					"host": [
+						"{{crAPI}}"
+					],
+					"path": [
+						"community",
+						"api",
+						"v2",
+						"community",
+						"posts",
+						"recent"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "<integer>"
+						},
+						{
+							"key": "offset",
+							"value": "<integer>"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"description": "Added as a part of security scheme: bearer",
+								"key": "Authorization",
+								"value": "Bearer <token>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/community/api/v2/community/posts/recent?limit=<integer>&offset=<integer>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"community",
+								"api",
+								"v2",
+								"community",
+								"posts",
+								"recent"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "<integer>"
+								},
+								{
+									"key": "offset",
+									"value": "<integer>"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "",
+							"description": {
+								"content": "",
+								"type": "text/plain"
+							}
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "",
+							"description": {
+								"content": "",
+								"type": "text/plain"
+							}
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "",
+							"description": {
+								"content": "",
+								"type": "text/plain"
+							}
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "",
+							"description": {
+								"content": "",
+								"type": "text/plain"
+							}
+						}
+					],
+					"cookie": [],
+					"body": "[\n  {\n    \"id\": \"<string>\",\n    \"title\": \"<string>\",\n    \"content\": \"<string>\",\n    \"author\": {\n      \"nickname\": \"<string>\",\n      \"email\": \"<string>\",\n      \"vehicleid\": \"<string>\",\n      \"profile_pic_url\": \"<string>\",\n      \"created_at\": \"<string>\"\n    },\n    \"comments\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"authorid\": \"<integer>\",\n    \"CreatedAt\": \"<string>\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"title\": \"<string>\",\n    \"content\": \"<string>\",\n    \"author\": {\n      \"nickname\": \"<string>\",\n      \"email\": \"<string>\",\n      \"vehicleid\": \"<string>\",\n      \"profile_pic_url\": \"<string>\",\n      \"created_at\": \"<string>\"\n    },\n    \"comments\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"authorid\": \"<integer>\",\n    \"CreatedAt\": \"<string>\"\n  }\n]"
+				}
+			]
+		},
+		{
+			"name": "CreateBooking",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstname\" : \"jim\",\n    \"lastname\" : \"Brown\",\n    \"totalprice\" : 111,\n    \"depositpaid\" : true,\n    \"bookingdates\" : {\n        \"checkin\" : \"2018-01-01\",\n        \"checkout\" : \"2019-01-01\"\n    },\n    \"additionalneeds\" : \"Breakfast\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://restful-booker.herokuapp.com/booking",
+					"protocol": "https",
+					"host": [
+						"restful-booker",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"booking"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{user1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Cookie",
+						"value": "token=abc123"
+					}
+				],
+				"url": {
+					"raw": "https://restful-booker.herokuapp.com/booking/1",
+					"protocol": "https",
+					"host": [
+						"restful-booker",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"booking",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Business-Flows",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJic042VnhNOWl3d3ZDRjYwQndkR3VoakF5Snp3QWF6X2ktRDdfR2JlQUNNIn0.eyJleHAiOjE3MzAxOTQ5ODMsImlhdCI6MTczMDE4NDE4MywianRpIjoiNWZmNTBkYjMtN2Y1Zi00M2RhLTk4ZWEtNjFjMTE0OWUyNTIzIiwiaXNzIjoiaHR0cHM6Ly9pZGVudGl0eS5xYWxhcmEuY29tL2F1dGgvcmVhbG1zL0dvbGRlbkJpcmQiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiYTllNWI5ZWItYWNhNy00MWFlLWFiYTctNmEyZDAyYWY2YzZkIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoibmV4dCIsInNlc3Npb25fc3RhdGUiOiJlNmY3NGViNi1mOWYyLTQyNWMtYmMwOS00ZTJhMTBjZDM0OWYiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbImh0dHBzOi8vd3d3LnF1b3RlYWRtaW4ucWFsYXJhLmNvbS8qIiwiaHR0cHM6Ly93d3cucWFsYXJhLmNvbSIsImh0dHBzOi8vd3d3LmJ1eWVyYWRtaW4ucWFsYXJhLmNvbSIsImh0dHBzOi8vd3d3LnByb21vYWRtaW4ucWFsYXJhLmNvbS8qIiwiaHR0cHM6Ly93d3cucG9hZG1pbi5xYWxhcmEuY29tLyoiLCJodHRwOi8vcWFsYXJhLmNvbS8qIiwiaHR0cHM6Ly93d3cucHJvZHVjdGFkbWluLnFhbGFyYS5jb20iLCJodHRwczovL3d3dy5xYWxhcmEuY29tLyoiLCJodHRwczovL3d3dy5xYWxhcmEuY29tLyIsImh0dHBzOi8vd3d3Lm9yZGVyYWRtaW4ucWFsYXJhLmNvbS8qIiwiaHR0cHM6Ly9xYWxhcmEuY29tLyoiLCJodHRwczovL2Nkbi5xYWxhcmEuY29tIiwiaHR0cHM6Ly93d3cucXVvdGVhZG1pbi5xYWxhcmEuY29tIiwiaHR0cHM6Ly93d3cucHJvZHVjdGFkbWluLnFhbGFyYS5jb20vKiIsImh0dHBzOi8vd3d3LnBvYWRtaW4ucWFsYXJhLmNvbSIsImh0dHBzOi8vd3d3Lm9yZGVyYWRtaW4ucWFsYXJhLmNvbSIsImh0dHBzOi8vd3d3LmJ1eWVyYWRtaW4ucWFsYXJhLmNvbS8qIiwiaHR0cHM6Ly8qLnFhbGFyYS5jb20vKiJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsiUFJPRFVDVF9BRE1JTl9VSSIsIlNFTExFUl9BRE1JTl9VSSIsIlZJRVdfU0VMTEVSX0hPTUUiLCJTSElQTUVOVF9NQU5BR0VNRU5UX1VJIiwiUFJPTU9fQURNSU4iLCJCVVlFUl9PUkdfT1dORVIiLCJPUFNfQURNSU4iLCJWSUVXX1BST0ZJTEUiLCJQT19BRE1JTiIsIm9mZmxpbmVfYWNjZXNzIiwiUVVPVEVfQURNSU5fVUkiLCJ1bWFfYXV0aG9yaXphdGlvbiIsIlFVT1RFX1BSSUNFIiwiT1JERVJfQURNSU5fVUkiXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6InByb2ZpbGUiLCJzaWQiOiJlNmY3NGViNi1mOWYyLTQyNWMtYmMwOS00ZTJhMTBjZDM0OWYifQ.TaTxzSKOEX4XZTimNk3e5AoN8Gy7k9zbAYFI3p9j5o61RI4DQ8HD2DC582_t3EKmSzpxmLt52Fobpi3ACFy9cwEY2kx54DwgVRvzY23cMLPlpojd6E5ea1BBSzqWlHrH3wXGmZyfjGBbI8EZO86rI6zaMwQltQwKUCK9pGYkr8zKj5CIsPP0Bqc0HD8noUJdlOmUtOGKZSHb8h0xljI7Xr9zbltQMjfpNH-hXOD214FeBMwfwgbP4FIQ1Y-VBki_30q_Z-YOhg5p7gNQ4lWh13UsHDgbXaq8VZCX5Vxrkpkvy73S3IJNq-vN2IEmT-gch0wwMhMySihTH_Jc1QohIg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "accept-language",
+						"value": "en-US,en;q=0.9"
+					},
+					{
+						"key": "authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJic042VnhNOWl3d3ZDRjYwQndkR3VoakF5Snp3QWF6X2ktRDdfR2JlQUNNIn0.eyJleHAiOjE3MzAxODU0NTIsImlhdCI6MTczMDE3NDY1MiwianRpIjoiMTNhYWU0MDQtYjMzYi00ZGM2LTk2MWItZWQ5YzZhOWQzNTY4IiwiaXNzIjoiaHR0cHM6Ly9pZGVudGl0eS5xYWxhcmEuY29tL2F1dGgvcmVhbG1zL0dvbGRlbkJpcmQiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiYTllNWI5ZWItYWNhNy00MWFlLWFiYTctNmEyZDAyYWY2YzZkIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoibmV4dCIsInNlc3Npb25fc3RhdGUiOiI3NDk1YzM4MS00NDAwLTQ4MzAtOGMzNy03ODYyZjI2NzYxMmQiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbImh0dHBzOi8vd3d3LnF1b3RlYWRtaW4ucWFsYXJhLmNvbS8qIiwiaHR0cHM6Ly93d3cucWFsYXJhLmNvbSIsImh0dHBzOi8vd3d3LmJ1eWVyYWRtaW4ucWFsYXJhLmNvbSIsImh0dHBzOi8vd3d3LnByb21vYWRtaW4ucWFsYXJhLmNvbS8qIiwiaHR0cHM6Ly93d3cucG9hZG1pbi5xYWxhcmEuY29tLyoiLCJodHRwOi8vcWFsYXJhLmNvbS8qIiwiaHR0cHM6Ly93d3cucHJvZHVjdGFkbWluLnFhbGFyYS5jb20iLCJodHRwczovL3d3dy5xYWxhcmEuY29tLyoiLCJodHRwczovL3d3dy5xYWxhcmEuY29tLyIsImh0dHBzOi8vd3d3Lm9yZGVyYWRtaW4ucWFsYXJhLmNvbS8qIiwiaHR0cHM6Ly9xYWxhcmEuY29tLyoiLCJodHRwczovL2Nkbi5xYWxhcmEuY29tIiwiaHR0cHM6Ly93d3cucXVvdGVhZG1pbi5xYWxhcmEuY29tIiwiaHR0cHM6Ly93d3cucHJvZHVjdGFkbWluLnFhbGFyYS5jb20vKiIsImh0dHBzOi8vd3d3LnBvYWRtaW4ucWFsYXJhLmNvbSIsImh0dHBzOi8vd3d3Lm9yZGVyYWRtaW4ucWFsYXJhLmNvbSIsImh0dHBzOi8vd3d3LmJ1eWVyYWRtaW4ucWFsYXJhLmNvbS8qIiwiaHR0cHM6Ly8qLnFhbGFyYS5jb20vKiJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsiUFJPRFVDVF9BRE1JTl9VSSIsIlNFTExFUl9BRE1JTl9VSSIsIlZJRVdfU0VMTEVSX0hPTUUiLCJTSElQTUVOVF9NQU5BR0VNRU5UX1VJIiwiUFJPTU9fQURNSU4iLCJCVVlFUl9PUkdfT1dORVIiLCJPUFNfQURNSU4iLCJWSUVXX1BST0ZJTEUiLCJQT19BRE1JTiIsIm9mZmxpbmVfYWNjZXNzIiwiUVVPVEVfQURNSU5fVUkiLCJ1bWFfYXV0aG9yaXphdGlvbiIsIlFVT1RFX1BSSUNFIiwiT1JERVJfQURNSU5fVUkiXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6InByb2ZpbGUiLCJzaWQiOiI3NDk1YzM4MS00NDAwLTQ4MzAtOGMzNy03ODYyZjI2NzYxMmQifQ.Tm6tYBA8lpVO2GVsO9JfkRMBApszOVOFBODUfXptR-anBRIhyF7L1PKAs5Zc0sKnn30jfJxigneXRj2YeLeDiWR6YOiU3ccBzTvIt2twgH0yVJ6vRBfhivhVx8jx79v3iZ3wvOcwJN1LC5gRGVYH9yIEY7UpEljTERb8lk7J3bn2WAWcZ7C333dCecmkA_a4Oezt4AZdlcqUwfyvOXfHLP6eD2p1ohPFWD1KqaEmNJCkQLtFORqBYBw2cs0nH1nX-ON1PQa5SCOsNCmXGNEg2N0Zqk3TzVo2sa2P2_YNXY4yqWW-mak_iv6zLVkjGfy4ix7TvjhmGLGe59f4QbDzQg"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json"
+					},
+					{
+						"key": "origin",
+						"value": "https://www.qalara.com"
+					},
+					{
+						"key": "priority",
+						"value": "u=1, i"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Not?A_Brand\";v=\"99\", \"Chromium\";v=\"130\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\""
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-site"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.6723.59 Safari/537.36"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \r\n    \"product\": {\r\n        \"quantity\": 1,\r\n        \"sellerCode\": \"SL10789\",\r\n        \"articleId\": \"10101597526\",\r\n        \"productId\": \"SKU::1010159752600100\",\r\n        \"minimumOrderQuantity\": 1,\r\n        \"isSampleDeliveryRequired\": false,\r\n        \"isQualityTestingRequired\": false,\r\n        \"productName\": \"Fringed Black & Hot Pink Basket Woven Cane Handbag\",\r\n        \"color\": \"Black\",\r\n        \"size\": \"\",\r\n        \"image\": \"https://assets.qalara.com/products/10101597526/TN1010159752600_1.jpg\",\r\n        \"productType\": \"RTS\",\r\n        \"typeOfOrder\": \"RTS\",\r\n        \"sellerCategory\": \"\",\r\n        \"commercialType\": \"OWNED\",\r\n        \"fulfillmentModel\": \"WAREHOUSE\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{ecommerceurl}}/v1/orders/my/product",
+					"host": [
+						"{{ecommerceurl}}"
+					],
+					"path": [
+						"v1",
+						"orders",
+						"my",
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SSR 1",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "en-US,en;q=0.9"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJnZWV0YUBnbWFpbC5jb20iLCJpYXQiOjE3MzAxOTI4NjMsImV4cCI6MTczMDc5NzY2Mywicm9sZSI6InVzZXIifQ.l-vP0nNuqGjAvTDrax1a0o7ub-URtSF942tCuJTSIi1IDcYqJeGdKssoHQDO2ffeovD5SPDJnA0V1yvtSJGQHCMpi8UHwIM1DblJLpP6xqAI4USpfXFfWW80YyWjuaESQFlCiKSChA14nJFiFSDqJlzE72lC9PP-ab9ttpeKS5TDqJsEr_RS5F2U3rgcFQbTOPtgj84tk5iRZ6a6uRLg8Ju7f1_YAKVoq9DPyx03Cdi2X2emHnCFLGc_B025tvxAq3fIlNo0j7E3sl5c5z7LLhTu3jzJWc12_gHLuM8xxSmExO-7kcFflGWTUHt5aOXCyKDFJi-DURa-ToalT8atOA"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Origin",
+						"value": "http://localhost:8888"
+					},
+					{
+						"key": "Proxy-Connection",
+						"value": "keep-alive"
+					},
+					{
+						"key": "Referer",
+						"value": "http://localhost:8888/contact-mechanic?VIN=3P2D3K11WMALT7795"
+					},
+					{
+						"key": "Sec-Fetch-Dest",
+						"value": "empty"
+					},
+					{
+						"key": "Sec-Fetch-Mode",
+						"value": "cors"
+					},
+					{
+						"key": "Sec-Fetch-Site",
+						"value": "same-origin"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.6778.86 Safari/537.36"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"mechanic_code\":\"TRAC_JHN\",\"problem_details\":\"qq\",\"vin\":\"3P2D3K11WMALT7795\",\"mechanic_api\":\"http://localhost:8888/workshop/api/mechanic/receive_report\",\"repeat_request_if_failed\":false,\"number_of_repeats\":1}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{crAPI}}/workshop/api/merchant/contact_mechanic",
+					"host": [
+						"{{crAPI}}"
+					],
+					"path": [
+						"workshop",
+						"api",
+						"merchant",
+						"contact_mechanic"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SSRF 2",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "en-US,en;q=0.9"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJnZWV0YUBnbWFpbC5jb20iLCJpYXQiOjE3MzAxOTI4NjMsImV4cCI6MTczMDc5NzY2Mywicm9sZSI6InVzZXIifQ.l-vP0nNuqGjAvTDrax1a0o7ub-URtSF942tCuJTSIi1IDcYqJeGdKssoHQDO2ffeovD5SPDJnA0V1yvtSJGQHCMpi8UHwIM1DblJLpP6xqAI4USpfXFfWW80YyWjuaESQFlCiKSChA14nJFiFSDqJlzE72lC9PP-ab9ttpeKS5TDqJsEr_RS5F2U3rgcFQbTOPtgj84tk5iRZ6a6uRLg8Ju7f1_YAKVoq9DPyx03Cdi2X2emHnCFLGc_B025tvxAq3fIlNo0j7E3sl5c5z7LLhTu3jzJWc12_gHLuM8xxSmExO-7kcFflGWTUHt5aOXCyKDFJi-DURa-ToalT8atOA"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Origin",
+						"value": "http://localhost:8888"
+					},
+					{
+						"key": "Proxy-Connection",
+						"value": "keep-alive"
+					},
+					{
+						"key": "Referer",
+						"value": "http://localhost:8888/contact-mechanic?VIN=3P2D3K11WMALT7795"
+					},
+					{
+						"key": "Sec-Fetch-Dest",
+						"value": "empty"
+					},
+					{
+						"key": "Sec-Fetch-Mode",
+						"value": "cors"
+					},
+					{
+						"key": "Sec-Fetch-Site",
+						"value": "same-origin"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.6778.86 Safari/537.36"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"mechanic_code\":\"TRAC_JHN\",\"problem_details\":\"qq\",\"vin\":\"3P2D3K11WMALT7795\",\"mechanic_api\":\"http://localhost:8888/workshop/api/mechanic/receive_report\",\"repeat_request_if_failed\":false,\"number_of_repeats\":1}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{crAPI}}/workshop/api/merchant/contact_mechanic",
+					"host": [
+						"{{crAPI}}"
+					],
+					"path": [
+						"workshop",
+						"api",
+						"merchant",
+						"contact_mechanic"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Improper Inventory Management 1",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJnaXRhQGdtYWlsLmNvbSIsImlhdCI6MTczMzM5MzA3MywiZXhwIjoxNzMzOTk3ODczLCJyb2xlIjoidXNlciJ9.Ebb6PyKRmCLMUayjQKLUwc2Nl26BtGQU3mb-E5s7vNvokAJs9DHU9B5Q46Out9UHKAe4Xvg6fqJws7komCTt1xQhYSjN0ZoCpKCQRkV3w9ztGS_nKHbQsVWwoiVR-9y5ICRW1UHR3dMWPfs8mZH_qBMNaUhDn6F5GzUlBG-ZiW2SgNZn6t3hVQwT9cWSgAs4TTXJyU_shyqm4BohBQN4XyJq_epmDQRxYpXjGW2VnI7TDiIG4JCs85wwbJUdBAxxl490aTeP5MJppK4GXGFnh0qucIZ4DdSTp50Q522Fe5SzuxLdjGdUh1gr1IzCJbteSvo5mZ08tzBOi-qammQytg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://staging.localhost:8888/identity/api/v2/user/dashboard",
+					"protocol": "http",
+					"host": [
+						"staging",
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"identity",
+						"api",
+						"v2",
+						"user",
+						"dashboard"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Improper Inventory Management 2",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJnaXRhQGdtYWlsLmNvbSIsImlhdCI6MTczMzM5MzA3MywiZXhwIjoxNzMzOTk3ODczLCJyb2xlIjoidXNlciJ9.Ebb6PyKRmCLMUayjQKLUwc2Nl26BtGQU3mb-E5s7vNvokAJs9DHU9B5Q46Out9UHKAe4Xvg6fqJws7komCTt1xQhYSjN0ZoCpKCQRkV3w9ztGS_nKHbQsVWwoiVR-9y5ICRW1UHR3dMWPfs8mZH_qBMNaUhDn6F5GzUlBG-ZiW2SgNZn6t3hVQwT9cWSgAs4TTXJyU_shyqm4BohBQN4XyJq_epmDQRxYpXjGW2VnI7TDiIG4JCs85wwbJUdBAxxl490aTeP5MJppK4GXGFnh0qucIZ4DdSTp50Q522Fe5SzuxLdjGdUh1gr1IzCJbteSvo5mZ08tzBOi-qammQytg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://staging.localhost:8888/identity/api/v2/user/dashboard",
+					"protocol": "http",
+					"host": [
+						"staging",
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"identity",
+						"api",
+						"v2",
+						"user",
+						"dashboard"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
