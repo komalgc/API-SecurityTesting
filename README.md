@@ -19,6 +19,11 @@ git clone https://github.com/OWASP/crAPI.git
 
 cd crAPI
 
+2. Start the CrAPI environment:
+
+docker-compose up -d
+
+
 ## 🎯 Testing OWASP API Security Top 10 (2023)
 
 The test collection includes scenarios designed to validate all **OWASP API Top 10 vulnerabilities**:
